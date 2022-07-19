@@ -94,9 +94,21 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             const Checkbox(value: false, onChanged: null),
             const Checkbox(value: true, onChanged: null),
-            KivaTheme().KivaDefaultButton(() {}, 'Dummy Text'),
-            KivaTheme().KivaMenuButton(() {}, 'Menu Button'),
-            const TextField(),
+            KivaTheme().KivaButtonCfg(() {}, 'Dummy Text', typeButton.classic),
+            const SizedBox(
+              height: 10.0,
+            ),
+            KivaTheme().KivaButtonCfg(() {}, 'Menu Button', typeButton.round),
+            const SizedBox(
+              height: 10.0,
+            ),
+            KivaTheme().KivaTextFieldCfg(
+                'Input your login', false, typeTextField.simple),
+            const SizedBox(
+              height: 10.0,
+            ),
+            KivaTheme().KivaTextFieldCfg(
+                'Your password dummy', true, typeTextField.boxed),
           ],
         ),
       ),
