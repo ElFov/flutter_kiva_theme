@@ -9,6 +9,7 @@ const Color kFloatActionButtonColor = Color.fromARGB(255, 255, 145, 0);
 const Color kFloatActionButtonHoverColor = Color.fromARGB(255, 255, 200, 133);
 const Color kCheckBoxFillColor = Color.fromARGB(255, 255, 132, 0);
 const Color kCheckBoxOverlayColor = Colors.black;
+const Color kTabBarUnderLineColor = Colors.white;
 
 //Widths and Heights
 const double kMainButtonWidth = 150.0;

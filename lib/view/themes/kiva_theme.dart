@@ -13,10 +13,8 @@ class KivaTheme {
       appBarTheme: const AppBarTheme(
         color: kMainColor,
       ),
-      outlinedButtonTheme: OutlinedButtonThemeData(
-        style: OutlinedButton.styleFrom(
-          primary: kMainColor,
-        ),
+      buttonTheme: const ButtonThemeData(
+        buttonColor: kMainColor,
       ),
       scaffoldBackgroundColor: kAppBackgroundColor,
       textTheme: const TextTheme(
@@ -35,10 +33,10 @@ class KivaTheme {
       focusColor: kMainColor);
 
   //Widget
-  //OutlinedButton
-  OutlinedButton KivaButtonCfg(
+  //TextButton
+  TextButton KivaButtonCfg(
       VoidCallback logic, String data, typeButton selected) {
-    return OutlinedButton(
+    return TextButton(
       onPressed: logic,
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(kMainColor),
@@ -49,8 +47,8 @@ class KivaTheme {
                 borderRadius: BorderRadius.circular(kMainButtonCircular)))
             : null,
         overlayColor: MaterialStateProperty.all(kFloatActionButtonHoverColor),
-        side: MaterialStateProperty.all(
-            const BorderSide(width: kMainButtonBorderWidth, color: kMainColor)),
+        // side: MaterialStateProperty.all(
+        //     const BorderSide(width: kMainButtonBorderWidth, color: kMainColor)),
       ),
       child: Center(
         child: Text(
@@ -112,8 +110,48 @@ class KivaTheme {
     );
   }
 
-  /* OutlinedButton KivaDefaultButton(VoidCallback logic, String data) {
-    return OutlinedButton(
+  MaterialApp KivaTabs() {
+    return MaterialApp(
+      theme: KivaTheme().themedata,
+      home: DefaultTabController(
+        length: 3,
+        child: Scaffold(
+          appBar: AppBar(
+            bottom: const TabBar(
+              indicator: UnderlineTabIndicator(
+                borderSide: BorderSide(
+                  width: kTextFieldBorderWidth,
+                  color: kTabBarUnderLineColor,
+                ),
+                insets:
+                    EdgeInsets.symmetric(horizontal: kMainButtonBorderWidth),
+              ),
+              tabs: [
+                Tab(
+                  text: 'Tab 1',
+                ),
+                Tab(
+                  text: 'Tab 2',
+                ),
+                Tab(
+                  text: 'Tab 3',
+                ),
+              ],
+            ),
+          ),
+          body: const TabBarView(
+            children: [
+              Icon(Icons.directions_car),
+              Icon(Icons.directions_transit),
+              Icon(Icons.directions_bike),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+  /* TextButton KivaDefaultButton(VoidCallback logic, String data) {
+    return TextButton(
       onPressed: logic,
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(kMainColor),
@@ -130,8 +168,8 @@ class KivaTheme {
     );
   }
 
-  OutlinedButton KivaMenuButton(VoidCallback logic, String data) {
-    return OutlinedButton(
+  TextButton KivaMenuButton(VoidCallback logic, String data) {
+    return TextButton(
       onPressed: logic,
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(kMainColor),
@@ -148,8 +186,8 @@ class KivaTheme {
     );
   }
 
-  OutlinedButton KivaMenuRoundButton(VoidCallback logic, String data) {
-    return OutlinedButton(
+  TextButton KivaMenuRoundButton(VoidCallback logic, String data) {
+    return TextButton(
       onPressed: logic,
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(kMainColor),
