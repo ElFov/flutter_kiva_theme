@@ -17,3 +17,8 @@ const double kMainButtonHeight = 60.0;
 const double kMainButtonCircular = 20.0;
 const double kMainButtonBorderWidth = 1.0;
 const double kTextFieldBorderWidth = 5.0;
+
+//Text
+const String kTabsName1 = 'Configuration';
+const String kTabsName2 = 'Planning';
+const String kTabsName3 = 'Export';

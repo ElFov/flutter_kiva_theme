@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: KivaTheme().themedata,
       //home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      home: KivaTheme().KivaTabs(),
+      home: KivaTheme().KivaTabs('Planning', levelAuth.admin),
     );
   }
 }

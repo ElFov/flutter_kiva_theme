@@ -7,6 +7,8 @@ enum typeButton { classic, round }
 
 enum typeTextField { simple, boxed }
 
+enum levelAuth { admin, manager, reader }
+
 class KivaTheme {
   //Colors
   ThemeData themedata = ThemeData(
@@ -110,42 +112,81 @@ class KivaTheme {
     );
   }
 
-  MaterialApp KivaTabs() {
+  MaterialApp KivaTabs(String name, levelAuth auth) {
     return MaterialApp(
       theme: KivaTheme().themedata,
       home: DefaultTabController(
-        length: 3,
+        length: auth == levelAuth.admin ? 3 : 2,
         child: Scaffold(
           appBar: AppBar(
-            bottom: const TabBar(
-              indicator: UnderlineTabIndicator(
-                borderSide: BorderSide(
-                  width: kTextFieldBorderWidth,
-                  color: kTabBarUnderLineColor,
-                ),
-                insets:
-                    EdgeInsets.symmetric(horizontal: kMainButtonBorderWidth),
-              ),
-              tabs: [
-                Tab(
-                  text: 'Tab 1',
-                ),
-                Tab(
-                  text: 'Tab 2',
-                ),
-                Tab(
-                  text: 'Tab 3',
-                ),
-              ],
+            title: Text(
+              auth == levelAuth.admin
+                  ? '$name (Mode administrateur)'
+                  : '$name (Mode manager/consultation)',
+              style: const TextStyle(color: kFloatActionButtonColor),
             ),
+            elevation: 0.0,
+            backgroundColor: Colors.white,
+            bottom: auth == levelAuth.admin
+                ? const TabBar(
+                    labelColor: kFloatActionButtonColor,
+                    unselectedLabelColor: kFloatActionButtonColor,
+                    indicator: UnderlineTabIndicator(
+                      borderSide: BorderSide(
+                        width: kTextFieldBorderWidth,
+                        color: kCheckBoxFillColor,
+                      ),
+                      insets: EdgeInsets.symmetric(
+                          horizontal: kMainButtonBorderWidth),
+                    ),
+                    tabs: [
+                      Tab(
+                        text: kTabsName1,
+                      ),
+                      Tab(
+                        text: kTabsName2,
+                      ),
+                      Tab(
+                        text: kTabsName3,
+                      ),
+                    ],
+                  )
+                : const TabBar(
+                    labelColor: kFloatActionButtonColor,
+                    unselectedLabelColor: kFloatActionButtonColor,
+                    indicator: UnderlineTabIndicator(
+                      borderSide: BorderSide(
+                        width: kTextFieldBorderWidth,
+                        color: kCheckBoxFillColor,
+                      ),
+                      insets: EdgeInsets.symmetric(
+                          horizontal: kMainButtonBorderWidth),
+                    ),
+                    tabs: [
+                      Tab(
+                        text: kTabsName2,
+                      ),
+                      Tab(
+                        text: kTabsName3,
+                      ),
+                    ],
+                  ),
           ),
-          body: const TabBarView(
-            children: [
-              Icon(Icons.directions_car),
-              Icon(Icons.directions_transit),
-              Icon(Icons.directions_bike),
-            ],
-          ),
+          //TODO replace childs with menus and buttons
+          body: auth == levelAuth.admin
+              ? const TabBarView(
+                  children: [
+                    Icon(Icons.directions_car),
+                    Icon(Icons.directions_transit),
+                    Icon(Icons.directions_bike),
+                  ],
+                )
+              : const TabBarView(
+                  children: [
+                    Icon(Icons.directions_transit),
+                    Icon(Icons.directions_bike),
+                  ],
+                ),
         ),
       ),
     );
